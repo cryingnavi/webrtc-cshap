@@ -130,7 +130,6 @@
     <Compile Include="Message\Sdp\SdpBodyJson.cs" />
     <Compile Include="Message\Sdp\SdpJson.cs" />
     <Compile Include="Peer.cs" />
-    <Compile Include="Signaler1.cs" />
     <Compile Include="Signaler.cs" />
     <Compile Include="StreamSamplePool.cs" />
     <Compile Include="VideoBridge.cs" />
