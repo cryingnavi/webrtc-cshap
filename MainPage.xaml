@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="WebRTCEX02.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WebRTCEX02"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" d:DesignWidth="3833.333" d:DesignHeight="2231.481">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Grid.Column="0" Background="#000"/>
+        <Border Grid.Row="0" Grid.Column="1" Background="gray"/>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="20" VerticalAlignment="Center">
+            <!-- 로컬 비디오 표시 -->
+            <MediaPlayerElement x:Name="localVideoPlayerElement" />
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1" Margin="20" VerticalAlignment="Center">
+            <!-- 리모트 비디오 표시 -->
+            <MediaPlayerElement x:Name="remoteVideoPlayerElement" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal"
+            HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBox Width="500" PlaceholderText="채팅방 아이디를 입력하세요" x:Name="roomIdEl"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal"
+            HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Start" Margin="10" Click="start" />
+            <Button Content="Call" Margin="10" Click="call" />
+            <Button Content="HangUp" Margin="10" Click="hangUp" />
+        </StackPanel>
+    </Grid>
+</Page>
