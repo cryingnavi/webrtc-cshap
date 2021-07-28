@@ -5,15 +5,13 @@ using System.Collections.Generic;
 namespace WebRTCEX02 {
     class Peer {
         private PeerConnection _peerConnection = null;
-        LocalMedia localMedia = null;
         RemoteMedia remoteMedia = null;
 
         public event GetSdp GetSdpEvent;
         public event GetCandidate GetCandidateEvent;
 
 
-        public Peer(LocalMedia localMedia, RemoteMedia remoteMedia) {
-            this.localMedia = localMedia;
+        public Peer(RemoteMedia remoteMedia) {
             this.remoteMedia = remoteMedia;
             this.createPeer();
         }

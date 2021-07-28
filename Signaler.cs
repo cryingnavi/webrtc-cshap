@@ -73,7 +73,7 @@ namespace WebRTCEX02 {
 						this.type = "offer";
 
 						Thread t1 = new Thread(delegate () {
-							this.CreatePeer();
+							this.CreateTransveiver();
 							peer.CreateOffer();
 						});
 						t1.Start();
@@ -81,7 +81,7 @@ namespace WebRTCEX02 {
 						this.type = "answer";
 
 						Thread t1 = new Thread(delegate () {
-							this.CreatePeer();
+							this.CreateTransveiver();
 						});
 						t1.Start();
 					} else if (command == "on_offer_sdp") {
@@ -130,7 +130,7 @@ namespace WebRTCEX02 {
 			}
 		}
 
-		private void CreatePeer()  {
+		private void CreateTransveiver()  {
 			Transceiver videoTransveiver = peer.AddTransceiver(MediaKind.Video);
 			videoTransveiver.LocalVideoTrack = localMedia.localVideoTrack;
 			videoTransveiver.DesiredDirection = Transceiver.Direction.SendReceive;
@@ -143,7 +143,8 @@ namespace WebRTCEX02 {
 		public void SetMedia(LocalMedia localMedia, RemoteMedia remoteMedia) {
 			this.localMedia = localMedia;
 			this.remoteMedia = remoteMedia;
-			this.peer = new Peer(this.localMedia, this.remoteMedia);
+			
+			this.peer = new Peer(this.remoteMedia);
 
 			this.peer.GetSdpEvent += OnGetSdp;
 			this.peer.GetCandidateEvent += OnGetCandidate;			
