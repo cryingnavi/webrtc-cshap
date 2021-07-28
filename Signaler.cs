@@ -46,6 +46,8 @@ namespace WebRTCEX02 {
 				var buffer = new byte[bufferSize];
 				var offset = 0;
 				var free = buffer.Length;
+
+				//모든 메시지를 받을때까지 반복한다.
 				while (true) {
 					ArraySegment<byte> bytesReceived = new ArraySegment<byte>(buffer, offset, free);
 					WebSocketReceiveResult result = await ws.ReceiveAsync(bytesReceived, CancellationToken.None);
@@ -61,6 +63,7 @@ namespace WebRTCEX02 {
 					}
 				}
 
+				//받은 메시지를 JSON 객체로 변환한다.
 				dynamic data = JsonConvert.DeserializeObject(Encoding.UTF8.GetString(buffer.ToArray(), 0, offset));
 				if (data != null) {
 					string command = data.header.command;
